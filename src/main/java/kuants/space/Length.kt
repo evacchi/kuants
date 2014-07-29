@@ -9,18 +9,21 @@ import kuants.MetricSystem
 class Length(override val value: Double) : Quantity<Length> {
     override val valueUnit = Meters
     override val valueConstructor = Meters
-    fun invoke(value: Double) = valueConstructor(value)
-}
 
+    fun invoke(value: Double): Length = valueConstructor(value)
+    fun invoke(value: Int): Length = invoke(value.toDouble())
+
+    fun times(that: Length): Area = Area.invoke(this, that)
+}
 trait LengthUnit : UnitOfMeasure<Length> {
-    override fun invoke(value: Double) = Length(value)
+    override fun invoke(value: Double): Length = Length(value)
 }
 
 object Kilometers: LengthUnit {
     override val conversionFactor = MetricSystem.Kilo
     override val symbol = "km"
 }
-object Meters : LengthUnit {
+public object Meters : LengthUnit {
     override val conversionFactor = MetricSystem.Unit
     override val symbol = "m"
 }
