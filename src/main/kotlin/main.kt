@@ -13,6 +13,29 @@ import kuants.space.Volume
 import kuants.space.Litres
 
 
+class MioItem : Item {
+
+    event fun onClick() {
+
+        val m = Meters(10.0)
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+trait Item
+annotation class event
+fun Meters(value:Double) = Meters.invoke(value)
+
 fun main(args: Array<String>) {
 
     /*
