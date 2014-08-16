@@ -19,5 +19,7 @@ Example:
     println(volume)
 
     println(volume to Litres)
+    
+    // val x = area + volume // type error!
 
 ```
