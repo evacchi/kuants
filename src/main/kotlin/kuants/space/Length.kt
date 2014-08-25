@@ -3,20 +3,20 @@ package kuants.space
 import kuants.UnitOfMeasure
 import kuants.Quantity
 import kuants.MetricSystem
+import java.math.BigDecimal
+
 /**
  * Created by evacchi on 16/07/14.
  */
-class Length(override val value: Double) : Quantity<Length> {
+class Length(override val value: BigDecimal) : Quantity<Length> {
     override val valueUnit = Meters
     override val valueConstructor = Meters
-
-    fun invoke(value: Double): Length = valueConstructor(value)
-    fun invoke(value: Int): Length = invoke(value.toDouble())
-
+    fun invoke(value: BigDecimal): Length = valueConstructor(value)
     fun times(that: Length): Area = Area.invoke(this, that)
 }
 trait LengthUnit : UnitOfMeasure<Length> {
-    override fun invoke(value: Double): Length = Length(value)
+    override fun invoke(value: BigDecimal): Length = Length(value)
+    override fun invoke(value: Double): Length = Length(BigDecimal(value))
 }
 
 object Kilometers: LengthUnit {
@@ -39,5 +39,3 @@ object Millimeters: LengthUnit {
     override val conversionFactor = MetricSystem.Milli
     override val symbol = "mm"
 }
-
-

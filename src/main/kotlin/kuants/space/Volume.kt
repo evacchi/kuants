@@ -3,12 +3,14 @@ package kuants.space
 import kuants.Quantity
 import kuants.UnitOfMeasure
 import kuants.MetricSystem
+import java.math.BigDecimal
+import kotlin.math.times
 
 /**
  * Created by evacchi on 29/07/14.
  */
 
-class Volume(override val value: Double) : Quantity<Volume> {
+class Volume(override val value: BigDecimal) : Quantity<Volume> {
     class object {
         fun invoke(a: Area, l: Length) = Volume( (a to SquareMeters) * (l to Meters) )
     }
@@ -19,7 +21,7 @@ class Volume(override val value: Double) : Quantity<Volume> {
 }
 
 trait VolumeUnit : UnitOfMeasure<Volume> {
-    override fun invoke(value: Double) = Volume(value)
+    override fun invoke(value: BigDecimal) = Volume(value)
 }
 
 object CubicMeters : VolumeUnit {
@@ -30,7 +32,7 @@ object CubicMeters : VolumeUnit {
 
 object Litres : VolumeUnit {
     override val symbol = "l"
-    override val conversionFactor = .001
+    override val conversionFactor = MetricSystem.Centi
 }
 
 object Nanolitres : VolumeUnit {

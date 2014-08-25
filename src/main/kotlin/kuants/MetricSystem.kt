@@ -1,31 +1,34 @@
 package kuants
 
+import java.math.BigDecimal
+import kotlin.math.times
+
 /**
  * Created by evacchi on 18/07/14.
  */
 object MetricSystem {
-    val Milli = .001
-    val Centi = .01
-    val Deci  = .1
+    val Milli = BigDecimal(".001")
+    val Centi = BigDecimal(".01")
+    val Deci  = BigDecimal(".1")
 
-    val Micro = .001 * Milli
-    val Nano  = .001 * Micro
-    val Pico  = .001 * Nano
-    val Femto = .001 * Pico
-    val Atto  = .001 * Femto
-    val Zepto = .001 * Atto
-    val Yocto = .001 * Zepto
+    val Micro = Milli * Milli
+    val Nano  = Milli * Micro
+    val Pico  = Milli * Nano
+    val Femto = Milli * Pico
+    val Atto  = Milli * Femto
+    val Zepto = Milli * Atto
+    val Yocto = Milli * Zepto
 
-    val Unit = 1.0
+    val Unit = BigDecimal(1)
 
-    val Deca  = 10.0
-    val Hecto = 100.0
-    val Kilo  = 1000.0
-    val Mega  = 1000.0 * Kilo
-    val Giga  = 1000.0 * Mega
-    val Tera  = 1000.0 * Giga
-    val Peta  = 1000.0 * Tera
-    val Exa   = 1000.0 * Peta
-    val Zetta = 1000.0 * Exa
-    val Yotta = 1000.0 * Zetta
+    val Deca  = BigDecimal(10)
+    val Hecto = BigDecimal(100)
+    val Kilo  = BigDecimal(1000)
+    val Mega  = Kilo * Kilo
+    val Giga  = Kilo * Mega
+    val Tera  = Kilo * Giga
+    val Peta  = Kilo * Tera
+    val Exa   = Kilo * Peta
+    val Zetta = Kilo * Exa
+    val Yotta = Kilo * Zetta
 }

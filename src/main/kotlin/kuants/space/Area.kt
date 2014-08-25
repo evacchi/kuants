@@ -3,11 +3,13 @@ package kuants.space
 import kuants.Quantity
 import kuants.UnitOfMeasure
 import kuants.MetricSystem
+import java.math.BigDecimal
+import kotlin.math.times
 
 /**
  * Created by evacchi on 29/07/14.
  */
-class Area(override val value: Double) : Quantity<Area> {
+class Area(override val value: BigDecimal) : Quantity<Area> {
     class object {
         fun invoke(l1: Length, l2: Length) = Area( (l1 to Meters) * (l2 to Meters) )
     }
@@ -20,7 +22,7 @@ class Area(override val value: Double) : Quantity<Area> {
 }
 
 trait AreaUnit : UnitOfMeasure<Area> {
-    override fun invoke(value: Double) = Area(value)
+    override fun invoke(value: BigDecimal) = Area(value)
 }
 
 object SquareMeters: AreaUnit {

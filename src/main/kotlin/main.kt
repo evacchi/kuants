@@ -11,10 +11,12 @@ import kuants.Quantity
 import kuants.space.Area
 import kuants.space.Volume
 import kuants.space.Litres
+import kuants.space.Centimeters
 
 
 class MioItem : Item {
 
+    var x = 1
     event fun onClick() {
 
         val m = Meters(10.0)
@@ -57,7 +59,11 @@ fun main(args: Array<String>) {
 
     val mts = Meters(19)
     val km2 = Kilometers(100)
-    val kmm = km2 + mts
+    val myvar = km2 + mts
+
+    val cv = myvar to Centimeters
+
+    println(cv)
 
     //val mkg = Meters(19)+Kilograms(1)
 
@@ -73,4 +79,7 @@ fun main(args: Array<String>) {
     println(volume)
 
     println(volume to Litres)
+
+
+
 }
