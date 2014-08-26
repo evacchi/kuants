@@ -21,7 +21,7 @@ class Volume(override val value: BigDecimal) : Quantity<Volume> {
 }
 
 trait VolumeUnit : UnitOfMeasure<Volume> {
-    override fun invoke(value: BigDecimal) = Volume(value)
+    override fun invoke(value: BigDecimal) = Volume(conversionFactor*value)
 }
 
 object CubicMeters : VolumeUnit {

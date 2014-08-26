@@ -4,6 +4,7 @@ import kuants.UnitOfMeasure
 import kuants.Quantity
 import kuants.MetricSystem
 import java.math.BigDecimal
+import kotlin.math.times
 
 /**
  * Created by evacchi on 16/07/14.
@@ -11,12 +12,11 @@ import java.math.BigDecimal
 class Length(override val value: BigDecimal) : Quantity<Length> {
     override val valueUnit = Meters
     override val valueConstructor = Meters
-    fun invoke(value: BigDecimal): Length = valueConstructor(value)
     fun times(that: Length): Area = Area.invoke(this, that)
 }
 trait LengthUnit : UnitOfMeasure<Length> {
-    override fun invoke(value: BigDecimal): Length = Length(value)
-    override fun invoke(value: Double): Length = Length(BigDecimal(value))
+    override fun invoke(value: BigDecimal): Length = Length(conversionFactor*value)
+    override fun invoke(value: Double): Length = Length(conversionFactor*BigDecimal(value))
 }
 
 object Kilometers: LengthUnit {

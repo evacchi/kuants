@@ -22,7 +22,7 @@ class Area(override val value: BigDecimal) : Quantity<Area> {
 }
 
 trait AreaUnit : UnitOfMeasure<Area> {
-    override fun invoke(value: BigDecimal) = Area(value)
+    override fun invoke(value: BigDecimal) = Area(conversionFactor*value)
 }
 
 object SquareMeters: AreaUnit {

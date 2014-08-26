@@ -4,6 +4,7 @@ import kuants.Quantity
 import kuants.UnitOfMeasure
 import kuants.MetricSystem
 import java.math.BigDecimal
+import kotlin.math.times
 
 /**
  * Created by evacchi on 18/07/14.
@@ -15,7 +16,7 @@ class Mass(override val value: BigDecimal) : Quantity<Mass> {
 }
 
 trait MassUnit : UnitOfMeasure<Mass> {
-    override fun invoke(value: BigDecimal) = Mass(value)
+    override fun invoke(value: BigDecimal) = Mass(conversionFactor*value)
 }
 
 object Kilograms: MassUnit {
